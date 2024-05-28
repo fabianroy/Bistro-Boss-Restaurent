@@ -10,11 +10,11 @@ const Main = () => {
                 <NavBar></NavBar>
             </header>
 
-            <main className='max-w-screen-xl mx-auto'>
+            <main>
                 <Outlet></Outlet>
             </main>
 
-            <footer>
+            <footer className="mt-20">
                 <Footer></Footer>
             </footer>
 
