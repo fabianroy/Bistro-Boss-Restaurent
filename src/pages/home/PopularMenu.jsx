@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import SectionTitle from './../../components/SectionTitle';
-import Menu from '../menu/Menu';
+import Menu from './MenuItems';
 const PopularMenu = () => {
 
     const [menu, setMenu] = useState([]);
@@ -22,6 +22,9 @@ const PopularMenu = () => {
                     {
                         menu.map(item => <Menu key={item._id} item={item}></Menu>)
                     }
+                </div>
+                <div className='w-fit mx-auto'>
+                    <button className='btn btn-outline border-0 border-b-4 mt-6 text-xl text-center'>View Full Menu</button>
                 </div>
             </section>
         </div>
