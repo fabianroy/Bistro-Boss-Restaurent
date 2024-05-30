@@ -1,13 +1,17 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../pages/footer/Footer";
 import NavBar from "../pages/navbar/NavBar";
 
 const Main = () => {
+
+    const location = useLocation();
+    const noHeaderFooter = location.pathname.includes('login');
+
     return (
         <div>
 
             <header>
-                <NavBar></NavBar>
+                {noHeaderFooter ? null : <NavBar></NavBar>}
             </header>
 
             <main>
@@ -15,7 +19,7 @@ const Main = () => {
             </main>
 
             <footer className="mt-20">
-                <Footer></Footer>
+                {noHeaderFooter ? null : <Footer></Footer>}
             </footer>
 
         </div>

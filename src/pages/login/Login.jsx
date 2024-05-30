@@ -1,0 +1,75 @@
+import { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+
+const Login = () => {
+
+    useEffect(() => {
+        loadCaptchaEnginge(6);
+    }, []);
+
+    const handleLogin = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+    }
+
+    const captchaRef = useRef();
+    const [disabled, setDisabled] = useState(true);
+
+    const handleValidateCaptcha = () => {
+        const value = captchaRef.current.value;
+        if (validateCaptcha(value)) {
+            setDisabled(false);
+        } else {
+            setDisabled(true); // Optional: ensure the button is disabled if validation fails
+        }
+    };
+
+    return (
+        <div>
+
+            <Helmet>
+                <title>Bistro Boss - Login</title>
+            </Helmet>
+
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content flex-col md:flex-row">
+                    <div className="text-center md:w-1/2 lg:text-left">
+                        <h1 className="text-5xl font-bold">Login now!</h1>
+                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    </div>
+                    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                        <form className="card-body" onSubmit={handleLogin}>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input type="email" name='email' placeholder="email" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
+                                <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+                            </div>
+                            <div className='my-4'>
+                                <label className='label'>
+                                    <LoadCanvasTemplate />
+                                </label>
+                                <input type="text" name='captcha' ref={captchaRef} className='input input-bordered w-full' placeholder='Type the text above' />
+                                <button type="button" onClick={handleValidateCaptcha} className="btn btn-sm w-full mt-2">Validate</button>
+                            </div>
+                            <div className="form-control mt-6">
+                                <button type="submit" disabled={disabled} className="btn text-white bg-orange-500">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Login;
