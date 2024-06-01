@@ -1,13 +1,33 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import { CiShoppingCart } from "react-icons/ci";
 
 const NavBar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                console.log('Logged out');
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
 
     const navOptions =
         <>
             <NavLink to='/'><li><a>Home</a></li></NavLink>
             <NavLink to='/menu'><li><a>Menu</a></li></NavLink>
             <NavLink to='/shop'><li><a>Shop</a></li></NavLink>
-            <NavLink to='/login'><li><a>Login</a></li></NavLink>
+            <NavLink to='/'><li>
+                <button className="btn">
+                    <CiShoppingCart className="h-6 w-6" />
+                    <div className="badge">+0</div>
+                </button>
+            </li></NavLink>
         </>;
 
     return (
@@ -30,7 +50,19 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    {
+                        user ? <>
+                            <div className="w-fit">
+                                <img className="w-12 rounded-full border-2 border-white mr-4" src={user.photoURL} alt={user.displayName} title={user.displayName} />
+                            </div>
+                            <NavLink onClick={handleLogout}><a className="btn">Logout</a></NavLink>
+                        </>
+                            :
+                            <>
+                                <NavLink to='/login'><a className="btn">Login</a></NavLink>
+                            </>
+
+                    }
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@ const Shop = () => {
 
     const categories = ['salad', 'soup', 'dessert', 'pizza', 'drinks']
     const { category } = useParams();
-    const initialIndex = categories.indexOf(category);
+    const initialIndex = category ? categories.indexOf(category) : 0; // Default to 0 if no category param
 
     const [tabIndex, setTabIndex] = useState(initialIndex);
 
