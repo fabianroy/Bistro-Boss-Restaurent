@@ -14,6 +14,7 @@ import AllUsers from "../pages/dashboard/AllUsers";
 import PrivateRoute from './PrivateRoute';
 import AddItem from "../pages/dashboard/AddItem";
 import AdminRoute from "./AdminRoute";
+import ManageItem from './../pages/dashboard/ManageItem';
 
 export const router = createBrowserRouter([
     {
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
             {
                 path: 'additem',
                 element: <AdminRoute><AddItem></AddItem></AdminRoute>
+            },
+            {
+                path: 'manageitems',
+                element: <AdminRoute><ManageItem></ManageItem></AdminRoute>
             }
         ]
     }

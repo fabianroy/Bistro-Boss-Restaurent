@@ -36,7 +36,7 @@ const Cart = () => {
         <div>
             <div className="flex justify-between items-center mb-16">
                 <h2 className="text-2xl font-semibold">Items : {cart.length}</h2>
-                <h2 className="text-2xl font-semibold">Total Price : $ {totalPrice}</h2>
+                <h2 className="text-2xl font-semibold">Total Price : BDT {totalPrice}</h2>
                 <button className="btn md:btn-lg btn-primary text-white italic">Pay with <FaCcStripe className="text-4xl" /></button>
             </div>
             <div>
@@ -72,7 +72,7 @@ const Cart = () => {
                                         <div className="text-sm opacity-50">{item.category}</div>
                                     </div></td>
                                     <td className="font-semibold text-orange-600">
-                                        $ {item.price}
+                                        BDT {item.price}
                                     </td>
                                     <td>
                                         <button onClick={() => handleDelete(item._id)} className="btn btn-error text-white"><FaTrash /></button>

@@ -14,7 +14,7 @@ const MenuCategory = ({ items, title, img }) => {
             </div>
             <div className='w-fit mx-auto'>
                 <Link to={`/shop/${title}`} className='btn btn-outline border-0 border-b-4 mt-6 text-xl text-center'>Order Your Favorite Food</Link>
-            </div>
+            </div> 
         </div>
     );
 };
