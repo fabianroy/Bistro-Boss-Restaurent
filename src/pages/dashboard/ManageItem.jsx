@@ -2,6 +2,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import useMenu from "../../hooks/useMenu";
 import Swal from "sweetalert2";
 import useAxios from "../../hooks/useAxios";
+import { Link } from "react-router-dom";
 
 const ManageItem = () => {
 
@@ -85,7 +86,7 @@ const ManageItem = () => {
                                         </div>
                                     </td>
                                     <td>
-                                        <button className="btn btn-warning text-white"><FaEdit /></button>
+                                        <Link to={`/dashboard/updateitem/${item._id}`} className="btn btn-warning text-white"><FaEdit /></Link>
                                     </td>
                                     <td>
                                         <button onClick={() => handleRemoveItem(item)} className="btn btn-error text-white"><FaTrash /></button>

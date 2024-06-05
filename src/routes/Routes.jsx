@@ -15,6 +15,7 @@ import PrivateRoute from './PrivateRoute';
 import AddItem from "../pages/dashboard/AddItem";
 import AdminRoute from "./AdminRoute";
 import ManageItem from './../pages/dashboard/ManageItem';
+import UpdateItem from './../pages/dashboard/UpdateItem';
 
 export const router = createBrowserRouter([
     {
@@ -69,6 +70,11 @@ export const router = createBrowserRouter([
             {
                 path: 'manageitems',
                 element: <AdminRoute><ManageItem></ManageItem></AdminRoute>
+            },
+            {
+                path: 'updateitem/:id',
+                element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
+                loader: ({params}) => fetch(`https://bistro-server-mu.vercel.app/menu/${params.id}`)
             }
         ]
     }

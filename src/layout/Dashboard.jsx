@@ -16,6 +16,7 @@ const Dashboard = () => {
                             <li><NavLink className='btn' to='/dashboard/adminhome'><FaHome className="h-6 w-6" />Admin Home</NavLink></li>
                             <li><NavLink className='btn' to='/dashboard/additem'><FaUtensils className="h-6 w-6" />Add Item</NavLink></li>
                             <li><NavLink className='btn' to='/dashboard/manageitems'><FaKitchenSet className="h-6 w-6" />Manage Items</NavLink></li>
+                            <li><NavLink className='btn' to='/dashboard/cart'><FaShoppingCart className="h-6 w-6" />My Cart</NavLink></li>
                             <li><NavLink className='btn' to='/dashboard/managebookings'><FaBook className="h-6 w-6" />Manage Bookings</NavLink></li>
                             <li><NavLink className='btn' to='/dashboard/users'><FaUser className="h-6 w-6" />All Users</NavLink></li>
                         </> :
