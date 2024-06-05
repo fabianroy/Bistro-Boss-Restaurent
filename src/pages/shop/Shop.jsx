@@ -42,35 +42,35 @@ const Shop = () => {
 
                     <div className="my-16">
                         <TabPanel>
-                            <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                 {
                                     salad.map(item => <FoodCart key={item._id} item={item} />)
                                 }
                             </div>
                         </TabPanel>
                         <TabPanel>
-                            <div className="grid grid-cols-3 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                 {
                                     soup.map(item => <FoodCart key={item._id} item={item} />)
                                 }
                             </div>
                         </TabPanel>
                         <TabPanel>
-                            <div className="grid grid-cols-3 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                 {
                                     dessert.map(item => <FoodCart key={item._id} item={item} />)
                                 }
                             </div>
                         </TabPanel>
                         <TabPanel>
-                            <div className="grid grid-cols-3 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                 {
                                     pizza.map(item => <FoodCart key={item._id} item={item} />)
                                 }
                             </div>
                         </TabPanel>
                         <TabPanel>
-                            <div className="grid grid-cols-3 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                 {
                                     drinks.map(item => <FoodCart key={item._id} item={item} />)
                                 }

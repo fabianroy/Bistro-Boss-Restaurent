@@ -4,8 +4,11 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import usePublicAxios from "../../hooks/usePublicAxios";
+import SocialLogin from "../../components/SocialLogin";
 
 const Register = () => {
+    const axiosPublic = usePublicAxios();
     const navigate = useNavigate();
     const { createUser, updateProfileInfo } = useContext(AuthContext);
 
@@ -23,16 +26,27 @@ const Register = () => {
                 console.log(user);
                 updateProfileInfo(data.name, data.photoURL)
                     .then(() => {
-                        console.log('Profile updated');
-                        reset();
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success',
-                            text: 'Account created successfully!',
-                            confirmButtonText: 'OK'
-                        })
-                            .then(() => {
-                                navigate('/login');
+                        const userInfo = {
+                            name: data.name,
+                            email: user.email,
+                            photoURL: data.photoURL,
+                            password: data.password,
+                        };
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('Account created successfully!');
+                                    reset();
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Success',
+                                        text: 'Account created successfully!',
+                                        confirmButtonText: 'OK'
+                                    })
+                                        .then(() => {
+                                            navigate('/');
+                                        });
+                                }
                             });
                     });
             });
@@ -91,6 +105,7 @@ const Register = () => {
                                 <button type="submit" className="btn text-white bg-orange-500">Register</button>
                             </div>
                             <p className='mt-4'>Already have an account? <Link className='text-orange-500' to='/login'>Login here</Link>.</p>
+                            <SocialLogin></SocialLogin>
                         </form>
                     </div>
                 </div>

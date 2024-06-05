@@ -1,16 +1,16 @@
-import { useContext } from "react";
-import { AuthContext } from "../provider/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
+import PropTypes from 'prop-types';
+import useAuth from "../hooks/useAuth";
 
 
 const PrivateRoute = ({ children }) => {
 
-    const { user, loading } = useContext(AuthContext);
+    const { user, loading } = useAuth();
 
     const location = useLocation();
 
     if (loading) {
-        return <span className="loading loading-dots loading-lg bg-orange-600"></span>
+        return <div className="w-fit mx-auto my-80"><span className="loading loading-dots loading-lg bg-orange-600"></span></div>
     }
 
     if (user) {
@@ -20,3 +20,7 @@ const PrivateRoute = ({ children }) => {
 };
 
 export default PrivateRoute;
+
+PrivateRoute.propTypes = {
+    children: PropTypes.node
+};

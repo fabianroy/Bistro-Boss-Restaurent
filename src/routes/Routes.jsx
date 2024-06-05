@@ -8,8 +8,12 @@ import ErrorPage from "../pages/errorpage/ErrorPage";
 import Shop from "../pages/shop/Shop";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
-import Secret from "../pages/shop/Secret";
-import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../layout/Dashboard";
+import Cart from "../pages/dashboard/Cart";
+import AllUsers from "../pages/dashboard/AllUsers";
+import PrivateRoute from './PrivateRoute';
+import AddItem from "../pages/dashboard/AddItem";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
     {
@@ -22,29 +26,45 @@ export const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: '/menu',
+                path: 'menu',
                 element: <Menu></Menu>
             },
             {
-                path: '/shop',
+                path: 'shop',
                 element: <Shop></Shop>
             },
             {
-                path: '/shop/:category',
+                path: 'shop/:category',
                 element: <Shop></Shop>
             },
             {
-                path: '/register',
+                path: 'register',
                 element: <Register></Register>
             },
             {
-                path: '/login',
+                path: 'login',
                 element: <Login></Login>
             },
-            {
-                path: 'secret',
-                element: <PrivateRoute><Secret></Secret></PrivateRoute>
-            }
         ]
     },
+    {
+        path: 'dashboard',
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            {
+                path: 'cart',
+                element: <Cart></Cart>
+            },
+
+            // Admin Routes
+            {
+                path: 'users',
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+            },
+            {
+                path: 'additem',
+                element: <AdminRoute><AddItem></AddItem></AdminRoute>
+            }
+        ]
+    }
 ]);
