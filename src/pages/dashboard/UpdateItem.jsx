@@ -57,13 +57,14 @@ const UpdateItem = () => {
                             {...register('category', { required: true })}
                         >
                             <option disabled selected value='default'>Category</option>
-                            <option value="offered">Offered</option>
-                            <option value="popular">Popular</option>
                             <option value="salad">Salad</option>
                             <option value="pizza">Pizza</option>
                             <option value="soup">Soup</option>
                             <option value="dessert">Dessert</option>
+                            <option value="maincourse">Main Course</option>
                             <option value="drinks">Drinks</option>
+                            <option value="offered">Offered</option>
+                            <option value="popular">Popular</option>
                         </select>
                         <input
                             type="text"

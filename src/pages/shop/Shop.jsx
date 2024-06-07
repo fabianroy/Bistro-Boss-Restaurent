@@ -23,6 +23,7 @@ const Shop = () => {
     const dessert = menu.filter(item => item.category === 'dessert');
     const pizza = menu.filter(item => item.category === 'pizza');
     const drinks = menu.filter(item => item.category === 'drinks');
+    const maincourse = menu.filter(item => item.category === 'maincourse');
 
     return (
         <div>
@@ -33,28 +34,16 @@ const Shop = () => {
             <section className="max-w-screen-xl mx-auto my-16">
                 <Tabs defaultIndex={tabIndex} onSelect={index => setTabIndex(index)}>
                     <TabList className='text-center text-orange-600 font-semibold text-xl'>
-                        <Tab>Salad</Tab>
-                        <Tab>Soup</Tab>
                         <Tab>Dessert</Tab>
+                        <Tab>Salad</Tab>
                         <Tab>Pizza</Tab>
+                        <Tab>Main Course</Tab>
+                        <Tab>Soup</Tab>
                         <Tab>Drinks</Tab>
+
                     </TabList>
 
                     <div className="my-16">
-                        <TabPanel>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                {
-                                    salad.map(item => <FoodCart key={item._id} item={item} />)
-                                }
-                            </div>
-                        </TabPanel>
-                        <TabPanel>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                {
-                                    soup.map(item => <FoodCart key={item._id} item={item} />)
-                                }
-                            </div>
-                        </TabPanel>
                         <TabPanel>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                 {
@@ -65,7 +54,28 @@ const Shop = () => {
                         <TabPanel>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                 {
+                                    salad.map(item => <FoodCart key={item._id} item={item} />)
+                                }
+                            </div>
+                        </TabPanel>
+                        <TabPanel>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                {
                                     pizza.map(item => <FoodCart key={item._id} item={item} />)
+                                }
+                            </div>
+                        </TabPanel>
+                        <TabPanel>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                {
+                                    maincourse.map(item => <FoodCart key={item._id} item={item} />)
+                                }
+                            </div>
+                        </TabPanel>
+                        <TabPanel>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                {
+                                    soup.map(item => <FoodCart key={item._id} item={item} />)
                                 }
                             </div>
                         </TabPanel>

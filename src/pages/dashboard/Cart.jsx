@@ -2,6 +2,7 @@ import { FaCcStripe, FaTrash } from "react-icons/fa";
 import useCart from "../../hooks/useCart";
 import Swal from "sweetalert2";
 import useAxios from "../../hooks/useAxios";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
 
@@ -36,8 +37,12 @@ const Cart = () => {
         <div>
             <div className="flex justify-between items-center mb-16">
                 <h2 className="text-2xl font-semibold">Items : {cart.length}</h2>
-                <h2 className="text-2xl font-semibold">Total Price : BDT {totalPrice}</h2>
-                <button className="btn md:btn-lg btn-primary text-white italic">Pay with <FaCcStripe className="text-4xl" /></button>
+                <h2 className="text-2xl font-semibold">Total Price : BDT {totalPrice}.00</h2>
+                {
+                    cart.length ? <Link to='/dashboard/payment'><button className="btn md:btn-lg btn-primary text-white italic">Pay with <FaCcStripe className="text-4xl" /></button></Link>
+                    : 
+                    <button className="btn md:btn-lg btn-primary text-white italic" disabled>Pay with <FaCcStripe className="text-4xl" /></button>
+                }
             </div>
             <div>
                 <div className="overflow-x-auto">
