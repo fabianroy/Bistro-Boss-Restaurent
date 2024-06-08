@@ -3,10 +3,12 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { CiShoppingCart } from "react-icons/ci";
 import useCart from "../../hooks/useCart";
+import useAdmin from "../../hooks/useAdmin";
 
 const NavBar = () => {
 
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
     const [cart] = useCart();
 
     const handleLogout = () => {
@@ -24,6 +26,12 @@ const NavBar = () => {
             <NavLink to='/'><li><a>Home</a></li></NavLink>
             <NavLink to='/menu'><li><a>Menu</a></li></NavLink>
             <NavLink to='/shop'><li><a>Shop</a></li></NavLink>
+            {
+                user && isAdmin && <NavLink to='/dashboard/admindashboard'><li><a>Dashboard</a></li></NavLink>
+            }
+            {
+                user && !isAdmin && <NavLink to='/dashboard/userdashboard'><li><a>Dashboard</a></li></NavLink>
+            }
         </>;
 
     return (
@@ -48,7 +56,7 @@ const NavBar = () => {
                 <div className="navbar-end flex items-center">
                     {
                         user ? <>
-                        <NavLink className='mr-4' to='/dashboard/cart'>
+                            <NavLink className='mr-4' to='/dashboard/cart'>
                                 <button className="btn btn-ghost">
                                     <CiShoppingCart className="h-6 w-6" />
                                     <div className="badge">{cart.length}</div>

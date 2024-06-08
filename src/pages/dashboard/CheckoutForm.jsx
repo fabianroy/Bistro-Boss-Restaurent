@@ -74,7 +74,7 @@ const CheckoutForm = () => {
                     name: user.displayName,
                     email: user.email,
                     amount: totalPrice,
-                    date: new Date(),
+                    date: new Date().toDateString(),
                     cartIds: cart.map(item => item._id),
                     menuItemIds: cart.map(item => item.menuId),
                     status: "Paid",
